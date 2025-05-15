@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Dashboard Mockup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>SEO Performance Dashboard</h1>
+            <div class="date-info">Last updated: May 8, 2025 | Data range: Apr 8 - May 8, 2025</div>
+        </header>
+
+        <!-- 1. Global Filter Bar -->
+        <section class="filter-bar">
+            <div class="filter-group date-granularity">
+                <label>Date Granularity</label>
+                <div class="segmented-control full-width">
+                    <input type="radio" name="dateGranularity" id="weekGranularity" value="week">
+                    <label for="weekGranularity">7 days</label>
+                    <input type="radio" name="dateGranularity" id="30daysGranularity" value="30days">
+                    <label for="30daysGranularity">30 Days</label>
+                    <input type="radio" name="dateGranularity" id="90daysGranularity" value="90days">
+                    <label for="90daysGranularity">90 Days</label>
+                    <input type="radio" name="dateGranularity" id="qtdGranularity" value="qtd">
+                    <label for="qtdGranularity">QTD</label>
+                    <input type="radio" name="dateGranularity" id="yearGranularity" value="year">
+                    <label for="yearGranularity">364 days</label>
+                    <input type="radio" name="dateGranularity" id="wtdGranularity" value="wtd">
+                    <label for="wtdGranularity">WTD</label>
+                    <input type="radio" name="dateGranularity" id="mtdGranularity" value="mtd">
+                    <label for="mtdGranularity">MTD</label>
+                    <input type="radio" name="dateGranularity" id="ytdGranularity" value="ytd">
+                    <label for="ytdGranularity">YTD</label>
+                </div>
+            </div>
+            <div class="filter-group date-range-group">
+                <div class="date-range-header">
+                    <label>Date Range</label>
+                    <div class="toggle-option">
+                        <label class="toggle">
+                            <input type="checkbox" id="dateRangeToggle">
+                            <span class="slider"></span>
+                        </label>
+                        <span>Use Date Range</span>
+                    </div>
+                </div>
+                <div class="date-inputs" id="dateRangeInputs">
+                    <div class="date-input-group">
+                        <label class="sublabel">Start</label>
+                        <input type="date" id="startDateInput" class="date-input">
+                    </div>
+                    <div class="date-input-group">
+                        <label class="sublabel">End</label>
+                        <input type="date" id="endDateInput" class="date-input">
+                    </div>
+                </div>
+            </div>
+            <div class="filter-group filter-group-separator">
+                <label>Compare</label>
+                <div class="toggle-option">
+                    <label class="toggle">
+                        <input type="checkbox" id="compareToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Enable Compare</span>
+                </div>
+                <div class="comparison-type" id="comparisonOptions">
+                    <select id="comparisonType">
+                        <option value="previous_period">Previous Period</option>
+                        <option value="previous_year">Same Period Last Year</option>
+                        <option value="custom">Custom Period</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Sites</label>
+                <div class="checkbox-dropdown">
+                    <div class="dropdown-toggle">All Sites</div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="site-all" checked>
+                            <label for="site-all">All Sites</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="site-1">
+                            <label for="site-1">Smile Dental</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="site-2">
+                            <label for="site-2">Bright Smile</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="site-3">
+                            <label for="site-3">Dental Care</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="site-4">
+                            <label for="site-4">Family Dental</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="site-5">
+                            <label for="site-5">Dental Works</label>
+                        </div>
+                    </div>
+                    <div class="selected-options"></div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Practice Code</label>
+                <div class="checkbox-dropdown">
+                    <div class="dropdown-toggle">Select Practice Code</div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="practice-all" checked>
+                            <label for="practice-all">All Practice Codes</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="practice-1">
+                            <label for="practice-1">SD001</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="practice-2">
+                            <label for="practice-2">BS002</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="practice-3">
+                            <label for="practice-3">DC003</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="practice-4">
+                            <label for="practice-4">FD004</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="practice-5">
+                            <label for="practice-5">DW005</label>
+                        </div>
+                    </div>
+                    <div class="selected-options"></div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Search Type</label>
+                <select>
+                    <option selected>All</option>
+                    <option>Web</option>
+                    <option>Images</option>
+                    <option>News</option>
+                    <option>Videos</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Language</label>
+                <select>
+                    <option selected>All</option>
+                    <option>EN</option>
+                    <option>FR</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Keyword</label>
+                <div class="filter-with-dropdown">
+                    <select class="filter-type keyword-filter-type">
+                        <option>Keyword</option>
+                        <option>Regex</option>
+                    </select>
+                    <input type="text" class="include-regex-input" placeholder="Include">
+                    <input type="text" class="exclude-regex-input" placeholder="Exclude">
+                </div>
+            </div>
+            <div class="filter-group filter-group-separator">
+                <label>URL Filter</label>
+                <div class="filter-with-dropdown">
+                    <select class="filter-type url-filter-type">
+                        <option>URL</option>
+                        <option>Regex</option>
+                    </select>
+                    <input type="text" class="include-regex-input" placeholder="Include">
+                    <input type="text" class="exclude-regex-input" placeholder="Exclude">
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Country</label>
+                <select>
+                    <option selected>All Countries</option>
+                    <option>Canada</option>
+                    <option>United States</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="filter-group filter-group-separator">
+                <label>Location</label>
+                <div class="checkbox-dropdown">
+                    <div class="dropdown-toggle">All Provinces</div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="location-all" checked>
+                            <label for="location-all">All Provinces</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="location-1">
+                            <label for="location-1">Ontario</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="location-2">
+                            <label for="location-2">Quebec</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="location-3">
+                            <label for="location-3">British Columbia</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="location-4">
+                            <label for="location-4">Alberta</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="location-5">
+                            <label for="location-5">Manitoba</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="location-6">
+                            <label for="location-6">Nova Scotia</label>
+                        </div>
+                    </div>
+                    <div class="selected-options"></div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>GBP</label>
+                <select id="gmbFilter">
+                    <option value="gmb_performance">GMB performance</option>
+                    <option value="non_gmb_performance">Non-Gmb performance</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Keyword Type</label>
+                <div class="checkbox-dropdown">
+                    <div class="dropdown-toggle">All Keywords</div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="keyword-all" checked>
+                            <label for="keyword-all">All Keywords</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="keyword-1">
+                            <label for="keyword-1">Branded</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="keyword-2">
+                            <label for="keyword-2">Non-Branded</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="keyword-3">
+                            <label for="keyword-3">Dental clinic</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="keyword-4">
+                            <label for="keyword-4">Teeth whitening</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="keyword-5">
+                            <label for="keyword-5">Invisalign</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="keyword-6">
+                            <label for="keyword-6">Emergency dentist</label>
+                        </div>
+                        <div class="dropdown-item">
+                            <input type="checkbox" id="keyword-7">
+                            <label for="keyword-7">Children dentist</label>
+                        </div>
+                    </div>
+                    <div class="selected-options"></div>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>LPM</label>
+                <select id="lpmFilter">
+                    <option value="onboarded">Onboarded</option>
+                    <option value="not_onboarded">Not Onboarded</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>SEO</label>
+                <select id="seoFilter">
+                    <option value="onboarded">Onboarded</option>
+                    <option value="not_onboarded">Not Onboarded</option>
+                </select>
+            </div>
+            <button class="filter-apply">Apply Filters</button>
+            <button class="filter-reset">Reset</button>
+        </section>
+
+        <!-- 2. KPI Overview Cards -->
+        <section class="kpi-cards">
+            <div class="kpi-card positive">
+                <h3>Clicks</h3>
+                <div class="kpi-value">24,856</div>
+                <div class="kpi-change positive">+12.4%</div>
+                <div class="kpi-prev">vs 22,114 prev period</div>
+                <div class="sparkline">
+                    <canvas class="sparkline-chart" data-values="120,132,145,128,156,178,165,189,201,198,210,224"></canvas>
+                </div>
+            </div>
+            <div class="kpi-card positive">
+                <h3>Impressions</h3>
+                <div class="kpi-value">548,921</div>
+                <div class="kpi-change positive">+8.7%</div>
+                <div class="kpi-prev">vs 505,124 prev period</div>
+                <div class="sparkline">
+                    <canvas class="sparkline-chart" data-values="480,510,495,520,535,550,540,560,570,545,580,590"></canvas>
+                </div>
+            </div>
+            <div class="kpi-card positive">
+                <h3>CTR</h3>
+                <div class="kpi-value">4.53%</div>
+                <div class="kpi-change positive">+0.32%</div>
+                <div class="kpi-prev">vs 4.21% prev period</div>
+                <div class="sparkline">
+                    <canvas class="sparkline-chart" data-values="4.1,4.2,4.3,4.2,4.4,4.5,4.4,4.6,4.7,4.5,4.6,4.7"></canvas>
+                </div>
+            </div>
+            <div class="kpi-card positive">
+                <h3>Avg Position</h3>
+                <div class="kpi-value">14.2</div>
+                <div class="kpi-change positive">+1.8</div>
+                <div class="kpi-prev">vs 16.0 prev period</div>
+                <div class="sparkline">
+                    <canvas class="sparkline-chart" data-values="16.5,16.2,15.8,15.5,15.2,14.9,14.7,14.5,14.3,14.2,14.1,14.0" data-invert="true"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Performance Trends -->
+        <section class="performance-trends">
+            <div class="section-header">
+                <h2>Performance Trends</h2>
+            </div>
+            <div class="chart-container">
+                <canvas id="performanceTrendChart"></canvas>
+            </div>
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #0066CC;"></span>
+                    <span>Clicks</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #4D94FF;"></span>
+                    <span>Impressions (thousands)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #00CC66;"></span>
+                    <span>CTR (%)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #FF3333;"></span>
+                    <span>Avg Position</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Practice Performance -->
+        <section class="practice-performance">
+            <div class="section-header">
+                <h2>Practice Performance</h2>
+                <div class="table-actions">
+                    <button class="download-data-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Data
+                    </button>
+                </div>
+            </div>
+            <table class="data-table full-width">
+                <thead>
+                    <tr>
+                        <th class="sortable-header">Practice <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Location <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Change <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Initial visible rows (first 5) -->
+                    <tr>
+                        <td>Smile Dental</td>
+                        <td>Toronto, ON</td>
+                        <td>45,320</td>
+                        <td>41,125</td>
+                        <td>4,532</td>
+                        <td>4,032</td>
+                        <td class="positive">+10.2%</td>
+                        <td class="positive">+12.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Bright Smile</td>
+                        <td>Vancouver, BC</td>
+                        <td>38,760</td>
+                        <td>36,056</td>
+                        <td>3,876</td>
+                        <td>3,566</td>
+                        <td class="positive">+7.5%</td>
+                        <td class="positive">+8.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Care</td>
+                        <td>Montreal, QC</td>
+                        <td>32,450</td>
+                        <td>30,964</td>
+                        <td>3,245</td>
+                        <td>3,085</td>
+                        <td class="positive">+4.8%</td>
+                        <td class="positive">+5.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Family Dental</td>
+                        <td>Calgary, AB</td>
+                        <td>29,870</td>
+                        <td>28,666</td>
+                        <td>2,987</td>
+                        <td>2,850</td>
+                        <td class="positive">+4.2%</td>
+                        <td class="positive">+4.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Works</td>
+                        <td>Ottawa, ON</td>
+                        <td>25,430</td>
+                        <td>26,162</td>
+                        <td>2,543</td>
+                        <td>2,626</td>
+                        <td class="negative">-2.8%</td>
+                        <td class="negative">-3.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Plus</td>
+                        <td>Edmonton, AB</td>
+                        <td>35,430</td>
+                        <td>33,488</td>
+                        <td>3,543</td>
+                        <td>3,336</td>
+                        <td class="positive">+5.8%</td>
+                        <td class="positive">+6.2%</td>
+                    </tr>
+                    <tr>
+                        <td>City Dental</td>
+                        <td>Mississauga, ON</td>
+                        <td>32,650</td>
+                        <td>31,273</td>
+                        <td>3,265</td>
+                        <td>3,086</td>
+                        <td class="positive">+4.4%</td>
+                        <td class="positive">+5.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Smile Solutions</td>
+                        <td>Ottawa, ON</td>
+                        <td>30,120</td>
+                        <td>29,186</td>
+                        <td>3,012</td>
+                        <td>2,885</td>
+                        <td class="positive">+3.2%</td>
+                        <td class="positive">+4.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Excellence</td>
+                        <td>Calgary, AB</td>
+                        <td>28,540</td>
+                        <td>27,953</td>
+                        <td>2,854</td>
+                        <td>2,763</td>
+                        <td class="positive">+2.1%</td>
+                        <td class="positive">+3.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Perfect Smile</td>
+                        <td>Burnaby, BC</td>
+                        <td>27,320</td>
+                        <td>26,996</td>
+                        <td>2,732</td>
+                        <td>2,665</td>
+                        <td class="positive">+1.2%</td>
+                        <td class="positive">+2.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Health</td>
+                        <td>London, ON</td>
+                        <td>26,450</td>
+                        <td>26,345</td>
+                        <td>2,645</td>
+                        <td>2,598</td>
+                        <td class="positive">+0.4%</td>
+                        <td class="positive">+1.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Family Dentistry</td>
+                        <td>Halifax, NS</td>
+                        <td>25,780</td>
+                        <td>25,935</td>
+                        <td>2,578</td>
+                        <td>2,601</td>
+                        <td class="negative">-0.6%</td>
+                        <td class="negative">-0.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Smile Center</td>
+                        <td>Halifax, NS</td>
+                        <td>22,870</td>
+                        <td>23,218</td>
+                        <td>2,287</td>
+                        <td>2,331</td>
+                        <td class="negative">-1.5%</td>
+                        <td class="negative">-1.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Group</td>
+                        <td>Winnipeg, MB</td>
+                        <td>21,320</td>
+                        <td>21,800</td>
+                        <td>2,132</td>
+                        <td>2,183</td>
+                        <td class="negative">-2.2%</td>
+                        <td class="negative">-2.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Office</td>
+                        <td>Victoria, BC</td>
+                        <td>18,760</td>
+                        <td>19,420</td>
+                        <td>1,876</td>
+                        <td>1,958</td>
+                        <td class="negative">-3.4%</td>
+                        <td class="negative">-4.2%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="load-more-container">
+                <button class="load-more-btn">Load More</button>
+            </div>
+        </section>
+
+        <!-- 5. Top Gaining Practices Section -->
+        <section class="winners-section">
+            <div class="section-header">
+                <h2>Top Gaining Practices</h2>
+                <div class="table-actions">
+                    <button class="download-data-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Data
+                    </button>
+                </div>
+            </div>
+            <table class="data-table full-width">
+                <thead>
+                    <tr>
+                        <th class="sortable-header">Practice <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Location <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Change <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Smile Dental</td>
+                        <td>Toronto, ON</td>
+                        <td>45,320</td>
+                        <td>34,810</td>
+                        <td>4,532</td>
+                        <td>3,422</td>
+                        <td class="positive">+30.2%</td>
+                        <td class="positive">+32.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Bright Smile</td>
+                        <td>Vancouver, BC</td>
+                        <td>38,760</td>
+                        <td>30,640</td>
+                        <td>3,876</td>
+                        <td>3,012</td>
+                        <td class="positive">+26.5%</td>
+                        <td class="positive">+28.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Plus</td>
+                        <td>Edmonton, AB</td>
+                        <td>35,430</td>
+                        <td>28,850</td>
+                        <td>3,543</td>
+                        <td>2,853</td>
+                        <td class="positive">+22.8%</td>
+                        <td class="positive">+24.2%</td>
+                    </tr>
+                    <tr>
+                        <td>City Dental</td>
+                        <td>Mississauga, ON</td>
+                        <td>32,650</td>
+                        <td>27,120</td>
+                        <td>3,265</td>
+                        <td>2,680</td>
+                        <td class="positive">+20.4%</td>
+                        <td class="positive">+21.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Care</td>
+                        <td>Montreal, QC</td>
+                        <td>32,450</td>
+                        <td>27,620</td>
+                        <td>3,245</td>
+                        <td>2,730</td>
+                        <td class="positive">+17.5%</td>
+                        <td class="positive">+18.9%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="load-more-container">
+                <button class="load-more-btn">Load More</button>
+            </div>
+        </section>
+
+        <!-- 6. Top Declining Practices Section -->
+        <section class="losers-section">
+            <div class="section-header">
+                <h2>Top Declining Practices</h2>
+                <div class="table-actions">
+                    <button class="download-data-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Data
+                    </button>
+                </div>
+            </div>
+            <table class="data-table full-width">
+                <thead>
+                    <tr>
+                        <th class="sortable-header">Practice <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Location <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Change <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dental Works</td>
+                        <td>Ottawa, ON</td>
+                        <td>25,430</td>
+                        <td>30,560</td>
+                        <td>2,543</td>
+                        <td>3,108</td>
+                        <td class="negative">-16.8%</td>
+                        <td class="negative">-18.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Smile Center</td>
+                        <td>Halifax, NS</td>
+                        <td>22,870</td>
+                        <td>26,750</td>
+                        <td>2,287</td>
+                        <td>2,720</td>
+                        <td class="negative">-14.5%</td>
+                        <td class="negative">-15.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Group</td>
+                        <td>Winnipeg, MB</td>
+                        <td>21,320</td>
+                        <td>24,560</td>
+                        <td>2,132</td>
+                        <td>2,490</td>
+                        <td class="negative">-13.2%</td>
+                        <td class="negative">-14.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Family Dentistry</td>
+                        <td>Regina, SK</td>
+                        <td>19,870</td>
+                        <td>22,450</td>
+                        <td>1,987</td>
+                        <td>2,280</td>
+                        <td class="negative">-11.5%</td>
+                        <td class="negative">-12.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Office</td>
+                        <td>Victoria, BC</td>
+                        <td>18,760</td>
+                        <td>20,710</td>
+                        <td>1,876</td>
+                        <td>2,090</td>
+                        <td class="negative">-9.4%</td>
+                        <td class="negative">-10.2%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="load-more-container">
+                <button class="load-more-btn">Load More</button>
+            </div>
+        </section>
+
+        <!-- 6. Winners & Losers Section (Selected Practice View) -->
+        <section class="winners-losers selected-practice" style="display: none;">
+            <div class="section-header">
+                <h2>Winners & Losers (Selected Practice)</h2>
+                <div class="view-controls">
+                    <button>All Practices</button>
+                    <button class="active">Selected Practice</button>
+                </div>
+            </div>
+            <div class="winners-losers-container">
+                <div class="winners-losers-column">
+                    <h3>Top Gaining Keywords</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable-header">Keyword <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Position <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Impressions <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Clicks <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Impressions Change <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Clicks Change <span class="sort-arrow"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>dental implants near me</td>
+                                <td>3.2</td>
+                                <td>3,420</td>
+                                <td>342</td>
+                                <td class="positive">+11.2%</td>
+                                <td class="positive">+12.4%</td>
+                            </tr>
+                            <tr>
+                                <td>emergency dentist toronto</td>
+                                <td>4.8</td>
+                                <td>2,870</td>
+                                <td>287</td>
+                                <td class="positive">+7.5%</td>
+                                <td class="positive">+8.7%</td>
+                            </tr>
+                            <tr>
+                                <td>teeth whitening cost</td>
+                                <td>5.3</td>
+                                <td>1,980</td>
+                                <td>198</td>
+                                <td class="positive">+6.4%</td>
+                                <td class="positive">+7.2%</td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="winners-losers-column">
+                    <h3>Top Declining Keywords</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable-header">Keyword <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Position <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Impressions <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Clicks <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Impressions Change <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Clicks Change <span class="sort-arrow"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>dentist open saturday</td>
+                                <td>12.4</td>
+                                <td>870</td>
+                                <td>87</td>
+                                <td class="negative">-7.5%</td>
+                                <td class="negative">-8.2%</td>
+                            </tr>
+                            <tr>
+                                <td>tooth extraction cost</td>
+                                <td>15.7</td>
+                                <td>650</td>
+                                <td>65</td>
+                                <td class="negative">-6.2%</td>
+                                <td class="negative">-6.9%</td>
+                            </tr>
+                            <tr>
+                                <td>dental insurance plans</td>
+                                <td>18.3</td>
+                                <td>420</td>
+                                <td>42</td>
+                                <td class="negative">-4.8%</td>
+                                <td class="negative">-5.4%</td>
+                            </tr>
+                            <tr>
+                                <td>wisdom teeth removal</td>
+                                <td>14.2</td>
+                                <td>980</td>
+                                <td>98</td>
+                                <td class="negative">-11.5%</td>
+                                <td class="negative">-12.8%</td>
+                            </tr>
+                            <tr>
+                                <td>pediatric dentist</td>
+                                <td>11.8</td>
+                                <td>1,120</td>
+                                <td>112</td>
+                                <td class="negative">-3.6%</td>
+                                <td class="negative">-4.2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="winners-losers-container">
+                            <tr>
+                                <th>URL <span class="sort-arrow"></span></th>
+                                <th>Organic Impressions <span class="sort-arrow"></span></th>
+                                <th>Organic Clicks <span class="sort-arrow"></span></th>
+                                <th>Impressions Change <span class="sort-arrow"></span></th>
+                                <th>Clicks Change <span class="sort-arrow"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="url-cell">/services/dental-implants</td>
+                                <td>12,450</td>
+                                <td>1,245</td>
+                                <td class="positive">+30.2%</td>
+                                <td class="positive">+32.4%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/locations/toronto-downtown</td>
+                                <td>9,870</td>
+                                <td>987</td>
+                                <td class="positive">+26.5%</td>
+                                <td class="positive">+28.7%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/teeth-whitening</td>
+                                <td>8,760</td>
+                                <td>876</td>
+                                <td class="positive">+22.8%</td>
+                                <td class="positive">+24.2%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/blog/invisalign-vs-braces</td>
+                                <td>6,540</td>
+                                <td>654</td>
+                                <td class="positive">+20.4%</td>
+                                <td class="positive">+21.8%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/dental-crowns</td>
+                                <td>5,430</td>
+                                <td>543</td>
+                                <td class="positive">+17.5%</td>
+                                <td class="positive">+18.9%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="winners-losers-column">
+                    <h3>Top Declining Pages</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable-header">URL <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Organic Impressions <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Organic Clicks <span class="sort-arrow"></span></th>
+                                <th class="sortable-header">Impressions Change <span class="sort-arrow"></span></th>
+                                <th>Clicks Change <span class="sort-arrow"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="url-cell">/hours/weekend-appointments</td>
+                                <td>4,320</td>
+                                <td>432</td>
+                                <td class="negative">-16.8%</td>
+                                <td class="negative">-18.2%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/extractions</td>
+                                <td>3,870</td>
+                                <td>387</td>
+                                <td class="negative">-14.5%</td>
+                                <td class="negative">-15.9%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/insurance</td>
+                                <td>3,210</td>
+                                <td>321</td>
+                                <td class="negative">-13.2%</td>
+                                <td class="negative">-14.4%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/wisdom-teeth</td>
+                                <td>2,980</td>
+                                <td>298</td>
+                                <td class="negative">-11.5%</td>
+                                <td class="negative">-12.8%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/pediatric</td>
+                                <td>2,760</td>
+                                <td>276</td>
+                                <td class="negative">-9.4%</td>
+                                <td class="negative">-10.2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard2">
+        <!-- 8. Keyword Analysis -->
+        <section class="keyword-analysis">
+            <div class="section-header">
+                <h2>Keyword Analysis</h2>
+                <div class="table-actions">
+                    <button class="download-data-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Data
+                    </button>
+                </div>
+            </div>
+            <table class="data-table full-width">
+                <thead>
+                    <tr>
+                        <th class="sortable-header">Keyword <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Position <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">CTR <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Branded <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>dentist near me</td>
+                        <td>4.2</td>
+                        <td class="positive">+2.3</td>
+                        <td>28,765</td>
+                        <td>26,120</td>
+                        <td>1,245</td>
+                        <td>1,045</td>
+                        <td class="positive">+10.1%</td>
+                        <td class="positive">+19.1%</td>
+                        <td>4.3%</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>dental implants cost</td>
+                        <td>5.8</td>
+                        <td class="positive">+1.7</td>
+                        <td>18,432</td>
+                        <td>16,850</td>
+                        <td>987</td>
+                        <td>845</td>
+                        <td class="positive">+9.4%</td>
+                        <td class="positive">+16.8%</td>
+                        <td>5.4%</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>smile dental toronto</td>
+                        <td>1.2</td>
+                        <td class="positive">+0.3</td>
+                        <td>12,543</td>
+                        <td>11,980</td>
+                        <td>854</td>
+                        <td>798</td>
+                        <td class="positive">+4.7%</td>
+                        <td class="positive">+7.0%</td>
+                        <td>6.8%</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>teeth whitening toronto</td>
+                        <td>6.4</td>
+                        <td class="positive">+1.2</td>
+                        <td>15,876</td>
+                        <td>14,320</td>
+                        <td>765</td>
+                        <td>680</td>
+                        <td class="positive">+10.9%</td>
+                        <td class="positive">+12.5%</td>
+                        <td>4.8%</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>invisalign cost canada</td>
+                        <td>7.8</td>
+                        <td class="negative">-0.5</td>
+                        <td>14,321</td>
+                        <td>15,240</td>
+                        <td>654</td>
+                        <td>710</td>
+                        <td class="negative">-6.0%</td>
+                        <td class="negative">-7.9%</td>
+                        <td>4.6%</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="load-more-container">
+                <button class="load-more-btn">Load More</button>
+            </div>
+        </section>
+
+        <!-- 9. URL Performance -->
+        <section class="url-performance">
+            <div class="section-header">
+                <h2>URL Performance</h2>
+                <div class="table-actions">
+                    <button class="download-data-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Data
+                    </button>
+                </div>
+            </div>
+            <table class="data-table full-width">
+                <thead>
+                    <tr>
+                        <th class="sortable-header">URL <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Position <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Last <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Prev <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Impressions Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">Clicks Change <span class="sort-arrow"></span></th>
+                        <th class="sortable-header">CTR <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="url-cell">/</td>
+                        <td>8.2</td>
+                        <td class="positive">+1.4</td>
+                        <td>45,876</td>
+                        <td>41,630</td>
+                        <td>2,543</td>
+                        <td>2,262</td>
+                        <td class="positive">+10.2%</td>
+                        <td class="positive">+12.4%</td>
+                        <td>5.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="url-cell">/services/dental-implants</td>
+                        <td>4.3</td>
+                        <td class="positive">+1.8</td>
+                        <td>32,543</td>
+                        <td>27,934</td>
+                        <td>1,876</td>
+                        <td>1,580</td>
+                        <td class="positive">+16.5%</td>
+                        <td class="positive">+18.7%</td>
+                        <td>5.8%</td>
+                    </tr>
+                    <tr>
+                        <td class="url-cell">/locations/toronto</td>
+                        <td>5.2</td>
+                        <td class="positive">+1.2</td>
+                        <td>28,765</td>
+                        <td>25,276</td>
+                        <td>1,654</td>
+                        <td>1,436</td>
+                        <td class="positive">+13.8%</td>
+                        <td class="positive">+15.2%</td>
+                        <td>5.7%</td>
+                    </tr>
+                    <tr>
+                        <td class="url-cell">/services/teeth-whitening</td>
+                        <td>6.4</td>
+                        <td class="positive">+0.9</td>
+                        <td>25,432</td>
+                        <td>23,226</td>
+                        <td>1,432</td>
+                        <td>1,292</td>
+                        <td class="positive">+9.5%</td>
+                        <td class="positive">+10.8%</td>
+                        <td>5.6%</td>
+                    </tr>
+                    <tr>
+                        <td class="url-cell">/services/invisalign</td>
+                        <td>5.8</td>
+                        <td class="positive">+0.7</td>
+                        <td>22,543</td>
+                        <td>21,028</td>
+                        <td>1,321</td>
+                        <td>1,219</td>
+                        <td class="positive">+7.2%</td>
+                        <td class="positive">+8.4%</td>
+                        <td>5.9%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="load-more-container">
+                <button class="load-more-btn">Load More</button>
+            </div>
+        </section>
+        </div>
+    </div>
+
+    <!-- Custom Period Modal -->
+    <div id="customPeriodModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Custom Comparison Period</h3>
+            
+            <div class="date-section">
+                <h4>Main Period</h4>
+                <div class="date-inputs">
+                    <div class="date-input-group">
+                        <label class="sublabel">From</label>
+                        <input type="date" id="mainPeriodStart">
+                    </div>
+                    <div class="date-input-group">
+                        <label class="sublabel">To</label>
+                        <input type="date" id="mainPeriodEnd">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="date-section">
+                <h4>Comparison Period</h4>
+                <div class="date-inputs">
+                    <div class="date-input-group">
+                        <label class="sublabel">From</label>
+                        <input type="date" id="comparisonPeriodStart">
+                    </div>
+                    <div class="date-input-group">
+                        <label class="sublabel">To</label>
+                        <input type="date" id="comparisonPeriodEnd">
+                    </div>
+                </div>
+            </div>
+            
+            <button id="applyCustomPeriod" class="filter-apply">Apply</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

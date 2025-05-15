@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Dashboard Mockup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>SEO Performance Dashboard</h1>
+            <div class="date-info">Last updated: May 8, 2025 | Data range: Apr 8 - May 8, 2025</div>
+        </header>
+
+        <!-- 1. Global Filter Bar -->
+        <section class="filter-bar">
+            <div class="filter-group">
+                <label>Date Range</label>
+                <select>
+                    <option>Last 7 Days</option>
+                    <option selected>Last 30 Days</option>
+                    <option>Last 90 Days</option>
+                    <option>MTD</option>
+                    <option>YTD</option>
+                    <option>Custom</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sites</label>
+                <select>
+                    <option selected>All Sites</option>
+                    <option>Selected Sites</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Data Slice</label>
+                <select>
+                    <option selected>All Data</option>
+                    <option>Organic Only</option>
+                    <option>Paid Only</option>
+                    <option>Local Only</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Practice Code</label>
+                <input type="text" placeholder="Enter practice code">
+            </div>
+            <div class="filter-group">
+                <label>Search Type</label>
+                <select>
+                    <option selected>All</option>
+                    <option>Web</option>
+                    <option>Images</option>
+                    <option>News</option>
+                    <option>Videos</option>
+                    <option>Maps</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Language</label>
+                <select>
+                    <option selected>All</option>
+                    <option>EN</option>
+                    <option>FR</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Keyword Contains</label>
+                <input type="text" placeholder="Enter keyword">
+                <div class="toggle-option">
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <span>Apply to chosen sites</span>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>URL Filter</label>
+                <input type="text" placeholder="URL contains">
+                <div class="toggle-option">
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <span>Apply to chosen sites</span>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Location</label>
+                <select>
+                    <option selected>All Provinces</option>
+                    <option>Ontario</option>
+                    <option>Quebec</option>
+                    <option>British Columbia</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Keyword Type</label>
+                <select>
+                    <option selected>All Keywords</option>
+                    <option>Branded</option>
+                    <option>Non-Branded</option>
+                </select>
+            </div>
+            <button class="filter-apply">Apply Filters</button>
+            <button class="filter-reset">Reset</button>
+        </section>
+
+        <!-- 2. KPI Overview Cards -->
+        <section class="kpi-cards">
+            <div class="kpi-card positive">
+                <h3>Clicks</h3>
+                <div class="kpi-value">24,856</div>
+                <div class="kpi-change positive">+12.4%</div>
+                <div class="kpi-prev">vs 22,114 prev period</div>
+                <div class="sparkline">
+                    <canvas class="sparkline-chart" data-values="120,132,145,128,156,178,165,189,201,198,210,224"></canvas>
+                </div>
+            </div>
+            <div class="kpi-card positive">
+                <h3>Impressions</h3>
+                <div class="kpi-value">548,921</div>
+                <div class="kpi-change positive">+8.7%</div>
+                <div class="kpi-prev">vs 505,124 prev period</div>
+                <div class="sparkline">
+                    <canvas class="sparkline-chart" data-values="480,510,495,520,535,550,540,560,570,545,580,590"></canvas>
+                </div>
+            </div>
+            <div class="kpi-card positive">
+                <h3>CTR</h3>
+                <div class="kpi-value">4.53%</div>
+                <div class="kpi-change positive">+0.32%</div>
+                <div class="kpi-prev">vs 4.21% prev period</div>
+                <div class="sparkline">
+                    <canvas class="sparkline-chart" data-values="4.1,4.2,4.3,4.2,4.4,4.5,4.4,4.6,4.7,4.5,4.6,4.7"></canvas>
+                </div>
+            </div>
+            <div class="kpi-card positive">
+                <h3>Avg Position</h3>
+                <div class="kpi-value">14.2</div>
+                <div class="kpi-change positive">+1.8</div>
+                <div class="kpi-prev">vs 16.0 prev period</div>
+                <div class="sparkline">
+                    <canvas class="sparkline-chart" data-values="16.5,16.2,15.8,15.5,15.2,14.9,14.7,14.5,14.3,14.2,14.1,14.0" data-invert="true"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Performance Trends -->
+        <section class="performance-trends">
+            <div class="section-header">
+                <h2>Performance Trends</h2>
+                <div class="view-controls">
+                    <button class="active">Overall</button>
+                    <button>By Device</button>
+                    <button>Branded vs Non-Branded</button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="performanceTrendChart"></canvas>
+            </div>
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #0066CC;"></span>
+                    <span>Clicks</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #4D94FF;"></span>
+                    <span>Impressions (thousands)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #00CC66;"></span>
+                    <span>CTR (%)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #FF3333;"></span>
+                    <span>Avg Position</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Practice Performance -->
+        <section class="practice-performance">
+            <div class="section-header">
+                <h2>Practice Performance</h2>
+                <div class="view-controls">
+                    <button class="active">Table View</button>
+                    <button>Map View</button>
+                </div>
+            </div>
+            <table class="data-table full-width">
+                <thead>
+                    <tr>
+                        <th>Practice</th>
+                        <th>Location</th>
+                        <th>Organic Impressions</th>
+                        <th>Organic Clicks</th>
+                        <th>MoM Change</th>
+                        <th>Top Keywords</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Smile Dental</td>
+                        <td>Toronto, ON</td>
+                        <td>45,320</td>
+                        <td>4,532</td>
+                        <td class="positive">+12.4%</td>
+                        <td class="queries-cell">
+                            <span class="query-pill">dentist toronto</span>
+                            <span class="query-pill">dental implants</span>
+                            <span class="query-pill">teeth whitening</span>
+                        </td>
+                        <td><span class="status-badge positive">Growing</span></td>
+                    </tr>
+                    <tr>
+                        <td>Bright Smile</td>
+                        <td>Vancouver, BC</td>
+                        <td>38,760</td>
+                        <td>3,876</td>
+                        <td class="positive">+8.7%</td>
+                        <td class="queries-cell">
+                            <span class="query-pill">vancouver dentist</span>
+                            <span class="query-pill">teeth cleaning</span>
+                            <span class="query-pill">invisalign</span>
+                        </td>
+                        <td><span class="status-badge positive">Growing</span></td>
+                    </tr>
+                    <tr>
+                        <td>Dental Care</td>
+                        <td>Montreal, QC</td>
+                        <td>32,450</td>
+                        <td>3,245</td>
+                        <td class="positive">+5.2%</td>
+                        <td class="queries-cell">
+                            <span class="query-pill">dentiste montreal</span>
+                            <span class="query-pill">soins dentaires</span>
+                            <span class="query-pill">blanchiment</span>
+                        </td>
+                        <td><span class="status-badge neutral">Stable</span></td>
+                    </tr>
+                    <tr>
+                        <td>Family Dental</td>
+                        <td>Calgary, AB</td>
+                        <td>29,870</td>
+                        <td>2,987</td>
+                        <td class="positive">+4.8%</td>
+                        <td class="queries-cell">
+                            <span class="query-pill">calgary dentist</span>
+                            <span class="query-pill">family dentistry</span>
+                            <span class="query-pill">dental checkup</span>
+                        </td>
+                        <td><span class="status-badge neutral">Stable</span></td>
+                    </tr>
+                    <tr>
+                        <td>Dental Works</td>
+                        <td>Ottawa, ON</td>
+                        <td>25,430</td>
+                        <td>2,543</td>
+                        <td class="negative">-3.2%</td>
+                        <td class="queries-cell">
+                            <span class="query-pill">ottawa dentist</span>
+                            <span class="query-pill">emergency dental</span>
+                            <span class="query-pill">root canal</span>
+                        </td>
+                        <td><span class="status-badge negative">Declining</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 5. Winners & Losers Section (All Practices View) -->
+        <section class="winners-losers">
+            <div class="section-header">
+                <h2>Winners & Losers (All Practices)</h2>
+                <div class="view-controls">
+                    <button class="active">All Practices</button>
+                    <button>Selected Practice</button>
+                </div>
+            </div>
+            <div class="winners-losers-container">
+                <div class="winners-losers-column">
+                    <h3>Top Gaining Practices</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Practice</th>
+                                <th>Location</th>
+                                <th>Organic Impressions</th>
+                                <th>Organic Clicks</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Smile Dental</td>
+                                <td>Toronto, ON</td>
+                                <td>45,320</td>
+                                <td>4,532</td>
+                                <td class="positive">+32.4%</td>
+                            </tr>
+                            <tr>
+                                <td>Bright Smile</td>
+                                <td>Vancouver, BC</td>
+                                <td>38,760</td>
+                                <td>3,876</td>
+                                <td class="positive">+28.7%</td>
+                            </tr>
+                            <tr>
+                                <td>Dental Plus</td>
+                                <td>Edmonton, AB</td>
+                                <td>35,430</td>
+                                <td>3,543</td>
+                                <td class="positive">+24.2%</td>
+                            </tr>
+                            <tr>
+                                <td>City Dental</td>
+                                <td>Mississauga, ON</td>
+                                <td>32,650</td>
+                                <td>3,265</td>
+                                <td class="positive">+21.8%</td>
+                            </tr>
+                            <tr>
+                                <td>Dental Care</td>
+                                <td>Montreal, QC</td>
+                                <td>32,450</td>
+                                <td>3,245</td>
+                                <td class="positive">+18.9%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="winners-losers-column">
+                    <h3>Top Declining Practices</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Practice</th>
+                                <th>Location</th>
+                                <th>Organic Impressions</th>
+                                <th>Organic Clicks</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dental Works</td>
+                                <td>Ottawa, ON</td>
+                                <td>25,430</td>
+                                <td>2,543</td>
+                                <td class="negative">-18.2%</td>
+                            </tr>
+                            <tr>
+                                <td>Smile Center</td>
+                                <td>Halifax, NS</td>
+                                <td>22,870</td>
+                                <td>2,287</td>
+                                <td class="negative">-15.9%</td>
+                            </tr>
+                            <tr>
+                                <td>Dental Group</td>
+                                <td>Winnipeg, MB</td>
+                                <td>21,320</td>
+                                <td>2,132</td>
+                                <td class="negative">-14.4%</td>
+                            </tr>
+                            <tr>
+                                <td>Family Dentistry</td>
+                                <td>Regina, SK</td>
+                                <td>19,870</td>
+                                <td>1,987</td>
+                                <td class="negative">-12.8%</td>
+                            </tr>
+                            <tr>
+                                <td>Dental Office</td>
+                                <td>Victoria, BC</td>
+                                <td>18,760</td>
+                                <td>1,876</td>
+                                <td class="negative">-10.2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Winners & Losers Section (Selected Practice View) -->
+        <section class="winners-losers selected-practice" style="display: none;">
+            <div class="section-header">
+                <h2>Winners & Losers (Selected Practice)</h2>
+                <div class="view-controls">
+                    <button>All Practices</button>
+                    <button class="active">Selected Practice</button>
+                </div>
+            </div>
+            <div class="winners-losers-container">
+                <div class="winners-losers-column">
+                    <h3>Top Gaining Keywords</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Keyword</th>
+                                <th>Position</th>
+                                <th>Change</th>
+                                <th>Clicks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>dental implants near me</td>
+                                <td>3.2</td>
+                                <td class="positive">+12.4</td>
+                                <td>342</td>
+                            </tr>
+                            <tr>
+                                <td>emergency dentist toronto</td>
+                                <td>4.8</td>
+                                <td class="positive">+8.7</td>
+                                <td>287</td>
+                            </tr>
+                            <tr>
+                                <td>teeth whitening cost</td>
+                                <td>5.3</td>
+                                <td class="positive">+7.2</td>
+                                <td>198</td>
+                            </tr>
+                            <tr>
+                                <td>invisalign vs braces</td>
+                                <td>6.1</td>
+                                <td class="positive">+6.8</td>
+                                <td>176</td>
+                            </tr>
+                            <tr>
+                                <td>dental crown procedure</td>
+                                <td>7.4</td>
+                                <td class="positive">+5.9</td>
+                                <td>145</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="winners-losers-column">
+                    <h3>Top Declining Keywords</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Keyword</th>
+                                <th>Position</th>
+                                <th>Change</th>
+                                <th>Clicks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>dentist open saturday</td>
+                                <td>12.4</td>
+                                <td class="negative">-8.2</td>
+                                <td>87</td>
+                            </tr>
+                            <tr>
+                                <td>tooth extraction cost</td>
+                                <td>15.7</td>
+                                <td class="negative">-6.9</td>
+                                <td>65</td>
+                            </tr>
+                            <tr>
+                                <td>dental insurance plans</td>
+                                <td>18.3</td>
+                                <td class="negative">-5.4</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>wisdom teeth removal</td>
+                                <td>14.2</td>
+                                <td class="negative">-4.8</td>
+                                <td>98</td>
+                            </tr>
+                            <tr>
+                                <td>pediatric dentist</td>
+                                <td>11.8</td>
+                                <td class="negative">-4.2</td>
+                                <td>112</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="winners-losers-container">
+                <div class="winners-losers-column">
+                    <h3>Top Gaining Pages</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>Organic Impressions</th>
+                                <th>Organic Clicks</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="url-cell">/services/dental-implants</td>
+                                <td>12,450</td>
+                                <td>1,245</td>
+                                <td class="positive">+32.4%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/locations/toronto-downtown</td>
+                                <td>9,870</td>
+                                <td>987</td>
+                                <td class="positive">+28.7%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/teeth-whitening</td>
+                                <td>8,760</td>
+                                <td>876</td>
+                                <td class="positive">+24.2%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/blog/invisalign-vs-braces</td>
+                                <td>6,540</td>
+                                <td>654</td>
+                                <td class="positive">+21.8%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/dental-crowns</td>
+                                <td>5,430</td>
+                                <td>543</td>
+                                <td class="positive">+18.9%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="winners-losers-column">
+                    <h3>Top Declining Pages</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>Organic Impressions</th>
+                                <th>Organic Clicks</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="url-cell">/hours/weekend-appointments</td>
+                                <td>4,320</td>
+                                <td>432</td>
+                                <td class="negative">-18.2%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/extractions</td>
+                                <td>3,870</td>
+                                <td>387</td>
+                                <td class="negative">-15.9%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/insurance</td>
+                                <td>3,210</td>
+                                <td>321</td>
+                                <td class="negative">-14.4%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/wisdom-teeth</td>
+                                <td>2,980</td>
+                                <td>298</td>
+                                <td class="negative">-12.8%</td>
+                            </tr>
+                            <tr>
+                                <td class="url-cell">/services/pediatric</td>
+                                <td>2,760</td>
+                                <td>276</td>
+                                <td class="negative">-10.2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Device & Technical Analysis -->
+        <section class="device-technical">
+            <div class="section-header">
+                <h2>Device & Technical Analysis</h2>
+            </div>
+            <div class="device-technical-container">
+                <div class="device-breakdown">
+                    <h3>Device Breakdown</h3>
+                    <div class="device-chart-container">
+                        <canvas id="deviceBreakdownChart"></canvas>
+                    </div>
+                    <div class="device-metrics">
+                        <div class="device-metric">
+                            <h4>Mobile</h4>
+                            <div class="metric-value">68.4%</div>
+                            <div class="metric-change positive">+2.3%</div>
+                        </div>
+                        <div class="device-metric">
+                            <h4>Desktop</h4>
+                            <div class="metric-value">28.7%</div>
+                            <div class="metric-change negative">-1.8%</div>
+                        </div>
+                        <div class="device-metric">
+                            <h4>Tablet</h4>
+                            <div class="metric-value">2.9%</div>
+                            <div class="metric-change negative">-0.5%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visibility-metrics">
+                    <h3>Visibility Metrics</h3>
+                    <div class="visibility-score">
+                        <h4>Visibility Score</h4>
+                        <div class="score-container">
+                            <div class="score-value">72</div>
+                            <div class="score-change positive">+4</div>
+                        </div>
+                        <div class="chart-container" style="height: 100px; margin-top: 10px;">
+                            <canvas class="sparkline-chart" data-values="62,64,65,67,68,69,70,71,72,72"></canvas>
+                        </div>
+                    </div>
+                    <div class="indexed-pages">
+                        <h4>Indexed Pages</h4>
+                        <div class="indexed-value">1,245</div>
+                        <div class="indexed-change positive">+32</div>
+                        <div class="chart-container" style="height: 100px; margin-top: 10px;">
+                            <canvas class="sparkline-chart" data-values="1150,1165,1180,1195,1210,1220,1230,1235,1240,1245"></canvas>
+                        </div>
+                    </div>
+                    <div class="coverage-issues">
+                        <h4>Coverage Issues</h4>
+                        <div class="issues-container">
+                            <div class="issue-type">
+                                <span class="issue-label">Errors</span>
+                                <span class="issue-count">12</span>
+                            </div>
+                            <div class="issue-type">
+                                <span class="issue-label">Warnings</span>
+                                <span class="issue-count">28</span>
+                            </div>
+                            <div class="issue-type">
+                                <span class="issue-label">Excluded</span>
+                                <span class="issue-count">45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Keyword Analysis -->
+        <section class="keyword-analysis">
+            <div class="section-header">
+                <h2>Keyword Analysis</h2>
+                <div class="view-controls">
+                    <button class="active">Table View</button>
+                    <button>Distribution View</button>
+                </div>
+            </div>
+            <table class="data-table full-width">
+                <thead>
+                    <tr>
+                        <th>Keyword</th>
+                        <th>Position</th>
+                        <th>Change</th>
+                        <th>Clicks</th>
+                        <th>Impressions</th>
+                        <th>CTR</th>
+                        <th>Branded</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>dentist near me</td>
+                        <td>4.2</td>
+                        <td class="positive">+2.3</td>
+                        <td>1,245</td>
+                        <td>28,765</td>
+                        <td>4.3%</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>dental implants cost</td>
+                        <td>5.8</td>
+                        <td class="positive">+1.7</td>
+                        <td>987</td>
+                        <td>18,432</td>
+                        <td>5.4%</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>smile dental toronto</td>
+                        <td>1.2</td>
+                        <td class="positive">+0.3</td>
+                        <td>854</td>
+                        <td>12,543</td>
+                        <td>6.8%</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>teeth whitening toronto</td>
+                        <td>6.4</td>
+                        <td class="positive">+1.2</td>
+                        <td>765</td>
+                        <td>15,876</td>
+                        <td>4.8%</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>invisalign cost canada</td>
+                        <td>7.8</td>
+                        <td class="negative">-0.5</td>
+                        <td>654</td>
+                        <td>14,321</td>
+                        <td>4.6%</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 9. URL Performance -->
+        <section class="url-performance">
+            <div class="section-header">
+                <h2>URL Performance</h2>
+                <div class="view-controls">
+                    <button class="active">All URLs</button>
+                    <button>By Content Type</button>
+                </div>
+            </div>
+            <table class="data-table full-
+width">
+                <thead>
+                    <tr>
+                        <th>URL</th>
+                        <th>Clicks</th>
+                        <th>Impressions</th>
+                        <th>CTR</th>
+                        <th>Avg Position</th>
+                        <th>Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="url-cell">/</td>
+                        <td>2,543</td>
+                        <td>45,876</td>
+                        <td>5.5%</td>
+                        <td>8.2</td>
+                        <td class="positive">+12.4%</td>
+                    </tr>
+                    <tr>
+                        <td class="url-cell">/services/dental-implants</td>
+                        <td>1,876</td>
+                        <td>32,543</td>
+                        <td>5.8%</td>
+                        <td>4.3</td>
+                        <td class="positive">+18.7%</td>
+                    </tr>
+                    <tr>
+                        <td class="url-cell">/locations/toronto</td>
+                        <td>1,654</td>
+                        <td>28,765</td>
+                        <td>5.7%</td>
+                        <td>5.2</td>
+                        <td class="positive">+15.2%</td>
+                    </tr>
+                    <tr>
+                        <td class="url-cell">/services/teeth-whitening</td>
+                        <td>1,432</td>
+                        <td>25,432</td>
+                        <td>5.6%</td>
+                        <td>6.4</td>
+                        <td class="positive">+10.8%</td>
+                    </tr>
+                    <tr>
+                        <td class="url-cell">/services/invisalign</td>
+                        <td>1,321</td>
+                        <td>22,543</td>
+                        <td>5.9%</td>
+                        <td>5.8</td>
+                        <td class="positive">+8.4%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
